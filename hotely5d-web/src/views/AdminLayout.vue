@@ -7,6 +7,7 @@
       <el-menu-item index="/admin">首页</el-menu-item>
       <el-menu-item index="/admin/admin">管理员管理</el-menu-item>
       <el-menu-item index="/admin/member">用户管理</el-menu-item>
+      <el-menu-item index="/admin/operator-manage">经营者账号管理</el-menu-item>
       <el-menu-item index="/admin/category">房型管理</el-menu-item>
       <el-menu-item index="/admin/room">房间管理</el-menu-item>
       <el-menu-item index="/admin/appointment">预约管理</el-menu-item>

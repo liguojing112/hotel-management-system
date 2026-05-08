@@ -81,6 +81,11 @@ const routes = [
         name: 'OrdersAdd',
         component: () => import(/* webpackChunkName: "Room" */ '@/views/OrdersAdd.vue')
       },
+      {
+        path: 'operator-manage',
+        name: 'operator-manage',
+        component: () => import(/* webpackChunkName: "Admin" */ '@/views/OperatorManage.vue')
+      },
     ]
   },
   {

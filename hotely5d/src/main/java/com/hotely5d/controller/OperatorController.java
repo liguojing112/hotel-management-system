@@ -20,6 +20,12 @@ public class OperatorController {
         return new Result(true, StatusCode.OK, "查询成功", page);
     }
 
+    @GetMapping("{id}")
+    public Result findById(@PathVariable("id") Integer id) {
+        Operator operator = operatorService.findById(id);
+        return new Result(true, StatusCode.OK, "查询成功", operator);
+    }
+
     @PostMapping
     public Result add(@RequestBody Operator operator) {
         operatorService.add(operator);
@@ -30,6 +36,12 @@ public class OperatorController {
     public Result modify(@RequestBody Operator operator) {
         operatorService.modify(operator);
         return new Result(true, StatusCode.OK, "修改成功");
+    }
+
+    @PutMapping("{id}/reset-password")
+    public Result resetPassword(@PathVariable("id") Integer id) {
+        String newPassword = operatorService.resetPassword(id);
+        return new Result(true, StatusCode.OK, "密码已重置为：" + newPassword);
     }
 
     @DeleteMapping("{id}")

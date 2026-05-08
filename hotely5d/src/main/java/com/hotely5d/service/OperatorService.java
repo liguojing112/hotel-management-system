@@ -40,6 +40,9 @@ public class OperatorService {
             if (!StringUtils.isEmpty(operator.getName())) {
                 entityWrapper.like("name", String.valueOf(operator.getName()));
             }
+            if (!StringUtils.isEmpty(operator.getPhone())) {
+                entityWrapper.like("phone", String.valueOf(operator.getPhone()));
+            }
         }
         return entityWrapper;
     }
@@ -58,6 +61,13 @@ public class OperatorService {
 
     public void removeById(Integer id) {
         operatorMapper.deleteById(id);
+    }
+
+    public String resetPassword(Integer id) {
+        Operator operator = operatorMapper.selectById(id);
+        operator.setPassword("123456");
+        operatorMapper.updateById(operator);
+        return operator.getPassword();
     }
 
     public Result login(LoginQuery query) {

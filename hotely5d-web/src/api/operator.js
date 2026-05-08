@@ -30,3 +30,17 @@ export const removeOperatorAPI = id => {
         method: 'delete'
     })
 }
+
+export const findOperatorByIdAPI = id => {
+    return request({
+        url: `/operator/${id}`,
+        method: 'get'
+    })
+}
+
+export const resetOperatorPasswordAPI = id => {
+    return request({
+        url: `/operator/${id}/reset-password`,
+        method: 'put'
+    })
+}
