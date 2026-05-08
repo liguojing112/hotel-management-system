@@ -21,7 +21,7 @@
             <div class="section-list">
 
                 <div v-for="item in categoryList" :key="item.id" class="section-item" @click="$router.push(`/front/room?categoryId=${item.id}`)">
-                    <img :src="$baseFileUrl+item.photo" class="hotel-img">
+                    <map-image :src="$baseFileUrl+item.photo" :lat="item.lat" :lng="item.lng" :name="item.categoryName" img-style="width:100%;height:200px;border-radius:4px;" @click.stop></map-image>
                     <div class="hotel-title">{{ item.categoryName }}</div>
                     <div class="flex justify-between item-center w-full">
                         <div class="hotel-price">￥{{ item.price }}</div>

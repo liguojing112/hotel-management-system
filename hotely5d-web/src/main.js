@@ -5,8 +5,10 @@ import store from './store'
 import 'normalize.css/normalize.css' //样式重置 https://www.jianshu.com/p/f50bf86597cb
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
+import MapImage from '@/components/MapImage.vue'
 import '@/assets/css/common.css'
 Vue.config.productionTip = false
+Vue.component('MapImage', MapImage)
 Vue.use(ElementUI)
 Vue.prototype.$baseFileUrl = process.env.VUE_APP_BASE_FILE_URL
 Vue.prototype.$sysTitle = process.env.VUE_APP_SYSTITLE

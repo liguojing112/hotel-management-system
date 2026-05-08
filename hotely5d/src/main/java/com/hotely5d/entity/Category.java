@@ -26,6 +26,10 @@ public class Category {
     private String area;// 面积
 	@TableField("introduce")
     private String introduce;// 介绍
+	@TableField("lat")
+    private Double lat;// 纬度
+	@TableField("lng")
+    private Double lng;// 经度
 
     @TableField(exist = false)
     private Integer roomNum = 0; //房间数
@@ -89,6 +93,18 @@ public class Category {
 
     public void setIntroduce(String introduce) {
         this.introduce = introduce;
+    }
+    public Double getLat() {
+        return lat;
+    }
+    public void setLat(Double lat) {
+        this.lat = lat;
+    }
+    public Double getLng() {
+        return lng;
+    }
+    public void setLng(Double lng) {
+        this.lng = lng;
     }
 
     public Integer getRoomNum() {

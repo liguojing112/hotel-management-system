@@ -65,6 +65,12 @@
         <el-form-item label="介绍">
           <el-input type="textarea" placeholder="请输入介绍" v-model="dialogForm.introduce" autocomplete="off"></el-input>
         </el-form-item>
+        <el-form-item label="纬度(lat)">
+          <el-input placeholder="请输入纬度" v-model="dialogForm.lat" autocomplete="off" type="number"></el-input>
+        </el-form-item>
+        <el-form-item label="经度(lng)">
+          <el-input placeholder="请输入经度" v-model="dialogForm.lng" autocomplete="off" type="number"></el-input>
+        </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
         <el-button @click="dialogFormVisible = false">取 消</el-button>
