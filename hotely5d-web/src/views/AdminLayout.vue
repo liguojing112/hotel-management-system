@@ -8,6 +8,7 @@
       <el-menu-item index="/admin/admin">管理员管理</el-menu-item>
       <el-menu-item index="/admin/member">用户管理</el-menu-item>
       <el-menu-item index="/admin/operator-manage">经营者账号管理</el-menu-item>
+      <el-menu-item index="/admin/scenic-spot">景区坐标管理</el-menu-item>
       <el-menu-item index="/admin/category">房型管理</el-menu-item>
       <el-menu-item index="/admin/room">房间管理</el-menu-item>
       <el-menu-item index="/admin/appointment">预约管理</el-menu-item>
@@ -83,6 +84,12 @@ export default {
 
 /deep/ .el-menu.el-menu--horizontal {
   border-bottom: none !important;
+}
+
+/deep/ .el-menu--horizontal > .el-menu-item,
+/deep/ .el-menu--horizontal > .el-submenu .el-submenu__title {
+  padding: 0 10px;
+  font-size: 14px;
 }
 
 .content {

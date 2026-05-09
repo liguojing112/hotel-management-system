@@ -86,6 +86,11 @@ const routes = [
         name: 'operator-manage',
         component: () => import(/* webpackChunkName: "Admin" */ '@/views/OperatorManage.vue')
       },
+      {
+        path: 'scenic-spot',
+        name: 'scenic-spot',
+        component: () => import(/* webpackChunkName: "Admin" */ '@/views/ScenicSpot.vue')
+      },
     ]
   },
   {

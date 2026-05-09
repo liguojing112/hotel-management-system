@@ -3,8 +3,8 @@
     :src="src"
     :style="imgStyle"
     :fit="fit"
-    class="map-image"
-    @click="handleClick"
+    :class="imageClasses"
+    @click="handleClick($event)"
   >
     <div slot="error" class="image-slot">
       <i class="el-icon-picture-outline"></i>
@@ -13,6 +13,8 @@
 </template>
 
 <script>
+import { getToken } from '@/utils/auth';
+
 export default {
   name: 'MapImage',
   props: {
@@ -25,6 +27,22 @@ export default {
     openMode: { type: String, default: 'blank' },
     fit: { type: String, default: 'cover' },
     imgStyle: { type: String, default: '' },
+    className: { type: String, default: '' },
+  },
+  computed: {
+    isLoggedIn() {
+      return !!getToken();
+    },
+    imageClasses() {
+      const classes = ['map-image'];
+      if (this.isLoggedIn && this.lat && this.lng) {
+        classes.push('clickable');
+      }
+      if (this.className) {
+        classes.push(this.className);
+      }
+      return classes;
+    },
   },
   methods: {
     isWeChat() {
@@ -36,10 +54,8 @@ export default {
     getWebUrl() {
       const n = encodeURIComponent(this.name);
       if (this.mapType === 'baidu') {
-        // 百度 marker API，指定 wgs84 坐标系避免偏移
         return `https://api.map.baidu.com/marker?location=${this.lat},${this.lng}&title=${n}&content=${n}&output=html&coord_type=wgs84`;
       }
-      // 高德官方标记链接，position 格式为 lng,lat
       return `https://uri.amap.com/marker?position=${this.lng},${this.lat}&name=${n}&callnative=0`;
     },
     getAppScheme() {
@@ -68,7 +84,6 @@ export default {
       document.body.appendChild(iframe);
       const timer = setTimeout(() => {
         document.body.removeChild(iframe);
-        // 页面未隐藏说明 App 未唤起，回退 Web 链接
         if (Date.now() - start > 1800) {
           this.openWeb();
         }
@@ -80,12 +95,14 @@ export default {
         }
       }, { once: true });
     },
-    handleClick() {
+    handleClick(event) {
       this.$emit('click', { lat: this.lat, lng: this.lng, name: this.name });
-      // 无有效坐标时不跳转
-      if (!this.lat || !this.lng) {
+      // 未登录或无有效坐标 → 不跳转，事件冒泡给父元素
+      if (!this.isLoggedIn || !this.lat || !this.lng) {
         return;
       }
+      // 已登录 → 阻止冒泡，打开地图
+      event.stopPropagation();
       if (this.isWeChat()) {
         this.openWeb();
         return;
@@ -102,10 +119,12 @@ export default {
 
 <style scoped>
 .map-image {
-  cursor: pointer;
   transition: opacity 0.2s;
 }
-.map-image:hover {
+.map-image.clickable {
+  cursor: pointer;
+}
+.map-image.clickable:hover {
   opacity: 0.85;
 }
 </style>
