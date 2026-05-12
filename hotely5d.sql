@@ -94,10 +94,10 @@ CREATE TABLE `category`  (
 -- ----------------------------
 -- Records of category
 -- ----------------------------
-INSERT INTO `category` VALUES (2, '豪华单人房', '1.jpg', 300.00, 1, 1, '30', '豪华单人房');
-INSERT INTO `category` VALUES (3, '经济双人房', '2.jpg', 350.00, 1, 2, '20', '经济双人房');
-INSERT INTO `category` VALUES (4, '总统套房', '3.jpg', 600.00, 2, 2, '20', '总统套房');
-INSERT INTO `category` VALUES (5, '经济单人房', '4.jpg', 120.00, 1, 1, '30', '经济单人房');
+INSERT INTO `category` (`id`, `category_name`, `photo`, `price`, `live_num`, `bed_num`, `area`, `introduce`, `lat`, `lng`) VALUES (2, '豪华单人房', '1.jpg', 300.00, 1, 1, '30', '豪华单人房', NULL, NULL);
+INSERT INTO `category` (`id`, `category_name`, `photo`, `price`, `live_num`, `bed_num`, `area`, `introduce`, `lat`, `lng`) VALUES (3, '经济双人房', '2.jpg', 350.00, 1, 2, '20', '经济双人房', NULL, NULL);
+INSERT INTO `category` (`id`, `category_name`, `photo`, `price`, `live_num`, `bed_num`, `area`, `introduce`, `lat`, `lng`) VALUES (4, '总统套房', '3.jpg', 600.00, 2, 2, '20', '总统套房', NULL, NULL);
+INSERT INTO `category` (`id`, `category_name`, `photo`, `price`, `live_num`, `bed_num`, `area`, `introduce`, `lat`, `lng`) VALUES (5, '经济单人房', '4.jpg', 120.00, 1, 1, '30', '经济单人房', NULL, NULL);
 
 -- ----------------------------
 -- Table structure for member
