@@ -86,6 +86,8 @@ CREATE TABLE `category`  (
   `bed_num` int(11) NULL DEFAULT NULL COMMENT '床位数',
   `area` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '面积',
   `introduce` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '介绍',
+  `lat` double NULL DEFAULT NULL COMMENT '纬度',
+  `lng` double NULL DEFAULT NULL COMMENT '经度',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '房型' ROW_FORMAT = COMPACT;
 
@@ -204,5 +206,32 @@ INSERT INTO `room` VALUES (3, 103, 4, 1);
 INSERT INTO `room` VALUES (4, 201, 3, 1);
 INSERT INTO `room` VALUES (5, 202, 4, 1);
 INSERT INTO `room` VALUES (6, 203, 5, 1);
+
+-- ----------------------------
+-- Table structure for scenic_spot
+-- ----------------------------
+DROP TABLE IF EXISTS `scenic_spot`;
+CREATE TABLE `scenic_spot`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `city_name` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '景区名称',
+  `lat` double NULL DEFAULT NULL COMMENT '纬度',
+  `lng` double NULL DEFAULT NULL COMMENT '经度',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 12 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '景区坐标配置' ROW_FORMAT = COMPACT;
+
+-- ----------------------------
+-- Records of scenic_spot
+-- ----------------------------
+INSERT INTO `scenic_spot` VALUES (1, '漓江', NULL, NULL);
+INSERT INTO `scenic_spot` VALUES (2, '象鼻山', NULL, NULL);
+INSERT INTO `scenic_spot` VALUES (3, '阳朔西街', NULL, NULL);
+INSERT INTO `scenic_spot` VALUES (4, '龙脊梯田', NULL, NULL);
+INSERT INTO `scenic_spot` VALUES (5, '两江四湖', NULL, NULL);
+INSERT INTO `scenic_spot` VALUES (6, '银子岩', NULL, NULL);
+INSERT INTO `scenic_spot` VALUES (7, '兴坪古镇', NULL, NULL);
+INSERT INTO `scenic_spot` VALUES (8, '遇龙河', NULL, NULL);
+INSERT INTO `scenic_spot` VALUES (9, '十里画廊', NULL, NULL);
+INSERT INTO `scenic_spot` VALUES (10, '世外桃源', NULL, NULL);
+INSERT INTO `scenic_spot` VALUES (11, '靖江王府', NULL, NULL);
 
 SET FOREIGN_KEY_CHECKS = 1;

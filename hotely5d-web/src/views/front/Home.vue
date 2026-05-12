@@ -198,7 +198,7 @@ export default {
         ...mapState(['token']),
         cityCoordMap() {
             const map = {}
-            this.scenicSpots.forEach(s => {
+            ;(this.scenicSpots || []).forEach(s => {
                 map[s.cityName] = { lat: s.lat, lng: s.lng }
             })
             return map
@@ -262,9 +262,13 @@ export default {
         const { data: noticeList } = await getTop5NoticeAPI()
         this.noticeList = noticeList
         const { data: categoryList } = await findAllCategoryAPI()
-        this.categoryList = categoryList
-        const { data: scenicSpots } = await findAllScenicSpotAPI()
-        this.scenicSpots = scenicSpots
+        this.categoryList = categoryList || []
+        try {
+            const { data: scenicSpots } = await findAllScenicSpotAPI()
+            this.scenicSpots = scenicSpots || []
+        } catch (e) {
+            this.scenicSpots = []
+        }
     },
 
     methods: {
